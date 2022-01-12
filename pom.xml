@@ -54,14 +54,12 @@
     </dependencyManagement>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <!--spring boot的jar包跟传统的web项目不同，需要插件支持maven打出能直接运行的jar包-->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <!--spring boot的jar包跟传统的web项目不同，需要插件支持maven打出能直接运行的jar包-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>
