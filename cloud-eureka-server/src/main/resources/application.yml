@@ -1,0 +1,22 @@
+server:
+  port: 8000
+
+eureka:
+  client: # 仅作为服务端，注册中心不注册自己
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    enable-self-preservation: true  # 开启保护机制 （默认开启）
+    renewal-percent-threshold: 0.5  # 丢包率高于0.5 则关闭
+  instance:
+    lease-renewal-interval-in-seconds: 30 # 心跳检测间隔
+    lease-expiration-duration-in-seconds: 90 # 间隔多久无响应, 视为服务失效
+
+
+
+logging:
+  level:
+    com:
+      netflix:
+        eureka: OFF
+        discovery: OFF
