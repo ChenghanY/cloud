@@ -2,21 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!--定义全局变量-->
+    <!--定义全局变量, spring boot项目制定properties为1.8，间接制定了maven build 用1.8的版本-->
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2020.0.5</spring-cloud.version>
     </properties>
-    <modelVersion>4.0.0</modelVersion>
-    <!--  用于聚合子项目的父工程, 打包方式为设置为pom -->
-    <packaging>pom</packaging>
-
-    <!--  被聚合的模块	-->
-    <modules>
-        <module>cloud-order</module>
-        <module>cloud-eureka-server</module>
-        <module>cloud-supplier</module>
-    </modules>
 
     <!--  Spring Boot项目都继承spring-boot-starter-parent的起步依赖-->
     <parent>
@@ -29,23 +19,23 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>cloud</name>
     <description>Cloud for james</description>
+    <modelVersion>4.0.0</modelVersion>
 
+    <!--  用于聚合子项目的父工程, 打包方式为设置为pom -->
+    <packaging>pom</packaging>
+
+    <!--  被聚合的模块	-->
+    <modules>
+        <module>cloud-order</module>
+        <module>cloud-eureka-server</module>
+        <module>cloud-supplier</module>
+    </modules>
 
     <!-- 父项目所有dependencies声明，子项目都会继承-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--  工具类 -->
-        <dependency>
-            <groupId>org.jodd</groupId>
-            <artifactId>jodd-bean</artifactId>
-            <version>5.1.6</version>
         </dependency>
     </dependencies>
 
@@ -66,7 +56,7 @@
     <build>
         <pluginManagement>
             <plugins>
-                <!--Maven对Spring Boot的插件支持-->
+                <!--spring boot的jar包跟传统的web项目不同，需要插件支持maven打出能直接运行的jar包-->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -74,5 +64,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
